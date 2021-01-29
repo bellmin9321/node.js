@@ -18,12 +18,13 @@ http.createServer(async (req, res) => {
   if (req.url.startsWith('/login')) {
     const { query } = url.parse(req.url);
     const { name } = qs.parse(query);
-    const expires = new Date();
-    // 쿠키 유효 시간을 현재시간 + 5분으로 설정
+    const expires = new Date(); 
+    // 쿠키 유효 시간을 현재시간 + 5분으로 설정(5분 후 로그아웃)
     expires.setMinutes(expires.getMinutes() + 5);
     res.writeHead(302, {
       Location: '/',
-      'Set-Cookie': `name=${encodeURIComponent(name)}; Expires=${expires.toGMTString()}; HttpOnly; Path=/`,
+      'Set-Cookie': `name=${encodeURIComponent(name)}; Expires=${expires.toGMTString()}; HttpOnly; Path=/`, // cookie에 expires 안넣으면 session cookie가 됨. 따라서 브라우저를 끄는순간(새로고침도 해당) cookie가 사라짐
+      //httpOnly는 html만 접근가능하게하고, js는 접근불가 *RSN) 보안
     });
     res.end();
   // name이라는 쿠키가 있는 경우
