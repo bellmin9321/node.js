@@ -2,9 +2,9 @@ const express = require('express');
 
 const router = express.Router();
 
-// GET / Router
-router.get('/', (req, res) => {
-  res.send('Hello, express');
+// GET / user Router
+router.get('/', (req, res) => { //GET /user/
+  res.send('Hello, user');
 });
 
 module.exports = router;
