@@ -1,0 +1,16 @@
+[문제발생]
+MySQL 설치했지만 workbench로 들어가보니 not connected 상태
+
+services.msc 실행 후 확인했지만 MySQL 서비스가 목록에 없음
+cmd에서 cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+mysql -uroot -p 실행
+but Can't connect to MySql server on 'localhost' 10061
+오류 발생
+
+[해결1] - 실패
+mysqld --install
+
+Install/Remove of the Service Denied! 오류 발생
+
+[해결2]
+MySQL Installer 실행 후 Reconfiguration 하여 설정하니
