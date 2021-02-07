@@ -15,8 +15,18 @@ app.set('port', process.env.PORT || 3000);
 
 // app.use(morgan('combined'));
 app.use(morgan('dev')); // 개발용
-app.use(cookieParser());
+app.use(cookieParser(process.env.COOKIE_SECRET));
+app.use(session({
+  resave: false,
+  saveUninitialized: false,
+  secre: process.env.COOKIE_SECRET,
+  cookie: {
+    httpOnly: true,
+  },
+  name: 'session-cookie',
+}))
 
+app.use('/', indexRouter);
 app.use((req, res, next) => {
   console.log('모든 요청에 실행')
   next();;
@@ -81,3 +91,5 @@ app.get('*', (req, res) => {
 app.listen(3000, () => {
   console.log('express server')
 })
+
+
