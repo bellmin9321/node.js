@@ -13,4 +13,8 @@ mysqld --install
 Install/Remove of the Service Denied! 오류 발생
 
 [해결2]
-MySQL Installer 실행 후 Reconfiguration 하여 설정하니
+MySQL Installer 실행 후 Reconfiguration 하여 설정하니 해결
+
+--------------------------------------------------
+내 PC - 프로그램 제거 또는 변경 - MySQL 관련 파일 전부삭제
+- 재설치 - MySQL installation 실행 - reconfiguration 에서 설정(TCP/IP), password 등 - mysql 실행 - 성공
