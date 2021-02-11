@@ -31,3 +31,21 @@ UNSIGNED: 0과 양수만 허용
 ZEROFILL: 숫자의 자리 수가 고정된 경우 빈 자리에 0을 넣음
 DEFAULT now(): 날짜 컬럼의 기본값을 현재 시간으로
 
+---------------------------------------------------------
+2021.2.11
+mysql> CREATE TABLE nodejs.comments (
+ -> id INT NULL AUTO_INCREMENT,
+ -> commenter INT NOT NULL,
+ -> comment VARCHAR(100) NOT NULL,
+ -> created_at DATETIME NOT NULL DEFAULT now(),
+ -> PRIMARY KEY(id),
+ -> INDEX commenter_idx (commenter ASC),
+ -> CONSTRAINT commenter
+ -> FOREIGN KEY (commenter)
+ -> REFERENCIES nodejs.users (id)
+ -> ON DELETE CASCADE
+ -> ON UPDATE CASCADE
+ -> COMMENT = '댓글'
+ -> DEFAULT COHARSET = utf8
+ -> ENGINE=InnoDB;
+
