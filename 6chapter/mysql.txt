@@ -48,4 +48,34 @@ mysql> CREATE TABLE nodejs.comments (
  -> COMMENT = '댓글'
  -> DEFAULT COHARSET = utf8
  -> ENGINE=InnoDB;
+---------------------------------------------------------
+2021.2.11
+Create 생성
+Read 조회
+Update 수정
+Delete 삭제
+
+>>insert into 테이블(칼럼명들) values (값들)
+mysql> insert into nodejs.users (name, age, married, comment) values ('bellush, 29, 0, programmer)
+
+>>select 컬럼 from 테이블명
+select * => 모든 컬럼 선택
+mysql> select * from nodejs.users;
+
+컬럼만 따로 추리기 가능
+mysql> select name, married from nodejs.users;
+
+>>where로 조건을 주어 선택 가능
+- and로 여러가지 조건을 동시에 만족하는 것을 찾음
+mysql> select name, age from nodejs.users where married = 0 and age > 30;
+
+- or로 여러가지 조건 중 하나 이상을 만족하는 것을 찾음
+mysql> select id, name from nodejs.users where married = 0 or age > 30;
+
+>> limit 으로 조회할 개수 제한
+mysql> select id, name from nodejs.users order by age desc limit 1;
+
+>> offset으로 앞의 로우들 스킵 가능(offset 2명 세 번째 것부터)
+mysql> select id, name from nodejs.users order by age desc limit 1 offset 1;
+
 
