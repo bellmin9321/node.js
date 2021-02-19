@@ -27,6 +27,7 @@ app.use(session({
 }))
 
 app.use('/', indexRouter);
+app.use('/user', userRouter);
 app.use((req, res, next) => {
   console.log('모든 요청에 실행')
   next();;
